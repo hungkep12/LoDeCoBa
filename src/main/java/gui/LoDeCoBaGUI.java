@@ -17,9 +17,10 @@ public class LoDeCoBaGUI {
     private final JButton btnConfirm;
 
     public LoDeCoBaGUI() {
-        frame = new JFrame("Xo so");
+        frame = new JFrame("Xổ số");
         frame.setSize(500, 700);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -34,12 +35,12 @@ public class LoDeCoBaGUI {
         input.setBounds(100, 50, 200, 30);
         panel.add(input);
 
-        btnConfirm = new JButton("Xac nhan");
+        btnConfirm = new JButton("Xác nhận");
         btnConfirm.setBounds(350, 50, 100, 30);
         btnConfirm.setBackground(Color.cyan);
         panel.add(btnConfirm);
 
-        JLabel label = new JLabel("Con so may man:");
+        JLabel label = new JLabel("Con số may mắn:");
         label.setBounds(0, 50, 100, 30);
         panel.add(label);
 
@@ -79,8 +80,8 @@ public class LoDeCoBaGUI {
         }
     }
 
-    public void showErrorMessage(String message) {
-        JOptionPane.showMessageDialog(frame, message, "Thong bao", JOptionPane.INFORMATION_MESSAGE);
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(frame, message, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void showFrame() {
