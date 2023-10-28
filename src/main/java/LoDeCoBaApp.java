@@ -12,12 +12,18 @@ public class LoDeCoBaApp {
         gui.addConfirmButtonListener(e -> {
             String inputText = gui.getInputText();
             if (inputText.length() != 2) {
-                gui.showErrorMessage("So cua ban khac 2 chu so");
+                gui.showMessage("Số của bạn khác 2 chữ số");
             } else {
-                gui.clearTextPane();
-                List<List<String>> data = LoDeCoBaLogic.generateFullPrize();
-                gui.displayResult(data);
-                showResult(data, inputText);
+                try {
+                    Integer.parseInt(inputText);
+                    gui.clearTextPane();
+                    List<List<String>> data = LoDeCoBaLogic.generateFullPrize();
+                    gui.displayResult(data);
+                    showResult(data, inputText);
+                }
+                catch (NumberFormatException ex) {
+                    gui.showMessage("Không đúng định dạng số");
+                }
             }
         });
     }
@@ -32,12 +38,13 @@ public class LoDeCoBaApp {
                 }
             }
             if (hasPrized) {
-                gui.showErrorMessage("Ban da trung giai " + i);
+                String prize = i == 0 ? "Đặc biệt" : String.valueOf(i);
+                gui.showMessage("Chúc mừng! Bạn đã trúng giải " + prize);
                 break;
             }
         }
         if (!hasPrized) {
-            gui.showErrorMessage("Rat tiec! Ban da khong trung thuong");
+            gui.showMessage("Rất tiếc! Bạn đã không trúng thưởng");
         }
     }
 
